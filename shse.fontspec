@@ -1,0 +1,14 @@
+\defaultfontfeatures[shse]{
+    Extension = .ttc,
+%
+    UprightFont = SourceHanSerif,
+    UprightFeatures = {FontIndex = 8},
+%
+    BoldFont = SourceHanSerif,
+    BoldFeatures = {FontIndex = 20},
+%
+    ItalicFont = FandolKai-Regular.otf,
+    ItalicFeatures = {Scale = 1},
+%
+    Scale = 0.9241246233542621
+}
