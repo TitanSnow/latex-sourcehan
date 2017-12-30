@@ -35,5 +35,6 @@
     FontFace = {eb}{\sldefault}{Font = iosevka, FontIndex = 17},
 %
     StylisticSet = 9,
-    Scale = 0.9241246233542621
+    Scale = 0.9241246233542621,
+    Contextuals = Alternate
 }
