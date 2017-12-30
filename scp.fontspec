@@ -1,6 +1,5 @@
 \defaultfontfeatures[scp]{
     Extension = .ttc,
-    StylisticSet = 9,
 %
     UprightFont = iosevka,
     UprightFeatures = {FontIndex = 2},
@@ -33,5 +32,8 @@
     FontFace = {el}{\sldefault}{Font = iosevka, FontIndex = 12},
     FontFace = {l}{\sldefault}{Font = iosevka, FontIndex = 13},
     FontFace = {sb}{\sldefault}{Font = iosevka, FontIndex = 15},
-    FontFace = {eb}{\sldefault}{Font = iosevka, FontIndex = 17}
+    FontFace = {eb}{\sldefault}{Font = iosevka, FontIndex = 17},
+%
+    StylisticSet = 9,
+    Scale = 0.9241246233542621
 }
