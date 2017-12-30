@@ -1,0 +1,37 @@
+\defaultfontfeatures[scp]{
+    Extension = .ttc,
+    StylisticSet = 9,
+%
+    UprightFont = iosevka,
+    UprightFeatures = {FontIndex = 2},
+%
+    BoldFont = iosevka,
+    BoldFeatures = {FontIndex = 4},
+%
+    ItalicFont = iosevka,
+    ItalicFeatures = {FontIndex = 8},
+%
+    BoldItalicFont = iosevka,
+    BoldItalicFeatures = {FontIndex = 10},
+%
+    SlantedFont = iosevka,
+    SlantedFeatures = {FontIndex = 14},
+%
+    BoldSlantedFont = iosevka,
+    BoldSlantedFeatures = {FontIndex = 16},
+%
+    FontFace = {el}{\updefault}{Font = iosevka, FontIndex = 0},
+    FontFace = {l}{\updefault}{Font = iosevka, FontIndex = 1},
+    FontFace = {sb}{\updefault}{Font = iosevka, FontIndex = 3},
+    FontFace = {eb}{\updefault}{Font = iosevka, FontIndex = 5},
+%
+    FontFace = {el}{\itdefault}{Font = iosevka, FontIndex = 6},
+    FontFace = {l}{\itdefault}{Font = iosevka, FontIndex = 7},
+    FontFace = {sb}{\itdefault}{Font = iosevka, FontIndex = 9},
+    FontFace = {eb}{\itdefault}{Font = iosevka, FontIndex = 11},
+%
+    FontFace = {el}{\sldefault}{Font = iosevka, FontIndex = 12},
+    FontFace = {l}{\sldefault}{Font = iosevka, FontIndex = 13},
+    FontFace = {sb}{\sldefault}{Font = iosevka, FontIndex = 15},
+    FontFace = {eb}{\sldefault}{Font = iosevka, FontIndex = 17}
+}
