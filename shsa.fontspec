@@ -1,0 +1,17 @@
+\defaultfontfeatures[shsa]{
+    Extension = .ttc,
+%
+    UprightFont = SourceHanSans,
+    UprightFeatures = {FontIndex = 12},
+%
+    BoldFont = SourceHanSans,
+    BoldFeatures = {FontIndex = 24},
+%
+    SlantedFont = SourceHanSans,
+    SlantedFeatures = {FontIndex = 12, FakeSlant = 0.17632698070846498},
+%
+    BoldSlantedFont = SourceHanSans,
+    BoldSlantedFeatures = {FontIndex = 24, FakeSlant = 0.17632698070846498},
+%
+    Scale = 0.9241246233542621
+}
