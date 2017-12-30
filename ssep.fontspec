@@ -1,0 +1,27 @@
+\defaultfontfeatures[ssep]{
+    Extension = .ttc,
+%
+    UprightFont = SourceSerifPro,
+    UprightFeatures = {FontIndex = 2},
+%
+    BoldFont = SourceSerifPro,
+    BoldFeatures = {FontIndex = 4},
+%
+    ItalicFont = SourceSerifPro,
+    ItalicFeatures = {FontIndex = 8},
+%
+    BoldItalicFont = SourceSerifPro,
+    BoldItalicFeatures = {FontIndex = 10},
+%
+    FontFace = {el}{\updefault}{Font = SourceSerifPro, FontIndex = 0},
+    FontFace = {l}{\updefault}{Font = SourceSerifPro, FontIndex = 1},
+    FontFace = {sb}{\updefault}{Font = SourceSerifPro, FontIndex = 3},
+    FontFace = {eb}{\updefault}{Font = SourceSerifPro, FontIndex = 5},
+%
+    FontFace = {el}{\itdefault}{Font = SourceSerifPro, FontIndex = 6},
+    FontFace = {l}{\itdefault}{Font = SourceSerifPro, FontIndex = 7},
+    FontFace = {sb}{\itdefault}{Font = SourceSerifPro, FontIndex = 9},
+    FontFace = {eb}{\itdefault}{Font = SourceSerifPro, FontIndex = 11},
+%
+    FontFace = {m}{ui}{Font = SourceSerifPro, {FontIndex = 8, FakeSlant = -0.18}}
+}
