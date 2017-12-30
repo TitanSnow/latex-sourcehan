@@ -1,0 +1,25 @@
+\defaultfontfeatures[ssap]{
+    Extension = .ttc,
+%
+    UprightFont = SourceSansPro,
+    UprightFeatures = {FontIndex = 2},
+%
+    BoldFont = SourceSansPro,
+    BoldFeatures = {FontIndex = 4},
+%
+    ItalicFont = SourceSansPro,
+    ItalicFeatures = {FontIndex = 8},
+%
+    BoldItalicFont = SourceSansPro,
+    BoldItalicFeatures = {FontIndex = 10},
+%
+    FontFace = {el}{\updefault}{Font = SourceSansPro, FontIndex = 0},
+    FontFace = {l}{\updefault}{Font = SourceSansPro, FontIndex = 1},
+    FontFace = {sb}{\updefault}{Font = SourceSansPro, FontIndex = 3},
+    FontFace = {eb}{\updefault}{Font = SourceSansPro, FontIndex = 5},
+%
+    FontFace = {el}{\itdefault}{Font = SourceSansPro, FontIndex = 6},
+    FontFace = {l}{\itdefault}{Font = SourceSansPro, FontIndex = 7},
+    FontFace = {sb}{\itdefault}{Font = SourceSansPro, FontIndex = 9},
+    FontFace = {eb}{\itdefault}{Font = SourceSansPro, FontIndex = 11}
+}
