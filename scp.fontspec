@@ -21,17 +21,17 @@
 %
     FontFace = {el}{\updefault}{Font = iosevka, FontIndex = 0},
     FontFace = {l}{\updefault}{Font = iosevka, FontIndex = 1},
-    FontFace = {sb}{\updefault}{Font = iosevka, FontIndex = 3},
+    FontFace = {mb}{\updefault}{Font = iosevka, FontIndex = 3},
     FontFace = {eb}{\updefault}{Font = iosevka, FontIndex = 5},
 %
     FontFace = {el}{\itdefault}{Font = iosevka, FontIndex = 6},
     FontFace = {l}{\itdefault}{Font = iosevka, FontIndex = 7},
-    FontFace = {sb}{\itdefault}{Font = iosevka, FontIndex = 9},
+    FontFace = {mb}{\itdefault}{Font = iosevka, FontIndex = 9},
     FontFace = {eb}{\itdefault}{Font = iosevka, FontIndex = 11},
 %
     FontFace = {el}{\sldefault}{Font = iosevka, FontIndex = 12},
     FontFace = {l}{\sldefault}{Font = iosevka, FontIndex = 13},
-    FontFace = {sb}{\sldefault}{Font = iosevka, FontIndex = 15},
+    FontFace = {mb}{\sldefault}{Font = iosevka, FontIndex = 15},
     FontFace = {eb}{\sldefault}{Font = iosevka, FontIndex = 17},
 %
     StylisticSet = 9,
