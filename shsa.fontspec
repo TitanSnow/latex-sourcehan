@@ -13,5 +13,17 @@
     BoldSlantedFont = SourceHanSans,
     BoldSlantedFeatures = {FontIndex = 24, FakeSlant = 0.17632698070846498},
 %
+    FontFace = {el}{\updefault}{Font = SourceHanSans, FontIndex = 0},
+    FontFace = {l}{\updefault}{Font = SourceHanSans, FontIndex = 4},
+    FontFace = {sl}{\updefault}{Font = SourceHanSans, FontIndex = 8},
+    FontFace = {mb}{\updefault}{Font = SourceHanSans, FontIndex = 20},
+    FontFace = {eb}{\updefault}{Font = SourceHanSans, FontIndex = 32},
+%
+    FontFace = {el}{\sldefault}{Font = SourceHanSans, FontIndex = 0, FakeSlant = 0.17632698070846498},
+    FontFace = {l}{\sldefault}{Font = SourceHanSans, FontIndex = 4, FakeSlant = 0.17632698070846498},
+    FontFace = {sl}{\sldefault}{Font = SourceHanSans, FontIndex = 8, FakeSlant = 0.17632698070846498},
+    FontFace = {mb}{\sldefault}{Font = SourceHanSans, FontIndex = 20, FakeSlant = 0.17632698070846498},
+    FontFace = {eb}{\sldefault}{Font = SourceHanSans, FontIndex = 32, FakeSlant = 0.17632698070846498},
+%
     Scale = 0.9241246233542621
 }
