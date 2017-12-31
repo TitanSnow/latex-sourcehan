@@ -56,4 +56,11 @@
     \ifthenelse{\equal{#1}{SC}}{\addCJKfontfeatures{Language = Chinese Simplified}}{%
     \ifthenelse{\equal{#1}{TC}}{\addCJKfontfeatures{Language = Chinese Traditional}}{%
     \ifthenelse{\equal{#1}{J}}{\addCJKfontfeatures{Language = Japanese}}{%
-    \ifthenelse{\equal{#1}{K}}{\addCJKfontfeatures{Language = Korean}}}}}}
+    \ifthenelse{\equal{#1}{K}}{\addCJKfontfeatures{Language = Korean}}{%
+        \PackageError{sourcehan}{Language tag `#1` not recognized}{%
+            \protect\CJKswitch\space only supports 4 language tags:\MessageBreak
+            `SC` for Chinese Simplified,\MessageBreak
+            `TC` for Chinese Traditional,\MessageBreak
+            `J` for Japanese,\MessageBreak
+            `K` for Korean.}%
+    }}}}}
