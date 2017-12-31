@@ -30,6 +30,28 @@
 \setCJKmainfont{shse}
 \setCJKsansfont{shsa}
 \setCJKmonofont{shsa}
+\setCJKfamilyfont{zhsong}{shse}[Language = Chinese Simplified]
+\DeclareRobustCommand{\songti}{\CJKfamily{zhsong}}
+\setCJKfamilyfont{zhhei}{shsa}[Language = Chinese Simplified]
+\DeclareRobustCommand{\heiti}{\CJKfamily{zhhei}}
+\setCJKfamilyfont{思源宋体}{shse}[Language = Chinese Simplified]
+\DeclareRobustCommand{\宋体}{\CJKfamily{思源宋体}}
+\setCJKfamilyfont{思源黑体}{shsa}[Language = Chinese Simplified]
+\DeclareRobustCommand{\黑体}{\CJKfamily{思源黑体}}
+\setCJKfamilyfont{思源宋體}{shse}[Language = Chinese Traditional]
+\DeclareRobustCommand{\宋體}{\CJKfamily{思源宋體}}
+\setCJKfamilyfont{思源黑體}{shsa}[Language = Chinese Traditional]
+\DeclareRobustCommand{\黑體}{\CJKfamily{思源黑體}}
+\setCJKfamilyfont{源ノ明朝}{shse}[Language = Japanese]
+\DeclareRobustCommand{\明朝}{\CJKfamily{源ノ明朝}}
+\DeclareRobustCommand{\mincho}{\CJKfamily{源ノ明朝}}
+\setCJKfamilyfont{源ノ角ゴシック}{shsa}[Language = Japanese]
+\DeclareRobustCommand{\ゴシック}{\CJKfamily{源ノ角ゴシック}}
+\DeclareRobustCommand{\gothic}{\CJKfamily{源ノ角ゴシック}}
+\setCJKfamilyfont{본명조}{shse}[Language = Korean]
+\DeclareRobustCommand{\본명조}{\CJKfamily{본명조}}
+\setCJKfamilyfont{본고딕}{shsa}[Language = Korean]
+\DeclareRobustCommand{\본고딕}{\CJKfamily{본고딕}}
 \DeclareRobustCommand{\CJKswitch}[1]{%
     \ifthenelse{\equal{#1}{SC}}{\addCJKfontfeatures{Language = Chinese Simplified}}{%
     \ifthenelse{\equal{#1}{TC}}{\addCJKfontfeatures{Language = Chinese Traditional}}{%
