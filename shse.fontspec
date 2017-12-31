@@ -7,5 +7,11 @@
     BoldFont = SourceHanSerif,
     BoldFeatures = {FontIndex = 20},
 %
+    FontFace = {el}{\updefault}{Font = SourceHanSerif, FontIndex = 0},
+    FontFace = {l}{\updefault}{Font = SourceHanSerif, FontIndex = 4},
+    FontFace = {mb}{\updefault}{Font = SourceHanSerif, FontIndex = 12},
+    FontFace = {sb}{\updefault}{Font = SourceHanSerif, FontIndex = 16},
+    FontFace = {eb}{\updefault}{Font = SourceHanSerif, FontIndex = 24},
+%
     Scale = 0.9241246233542621
 }
