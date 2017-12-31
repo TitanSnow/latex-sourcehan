@@ -1,12 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{sourcehan}[2017/12/30 Adobe Source Han Fonts for CJK Typesetting]
-\newif\ifsourcehan@loadsourcepro
-\sourcehan@loadsourceprotrue
-\DeclareOption{no-sourcepro}{
-    \sourcehan@loadsourceprofalse
-}
-\ProcessOptions\relax
-\ifsourcehan@loadsourcepro\RequirePackage{sourcepro}\fi
 \RequirePackage{ifthen}
 \ifthenelse{\isundefined{\setCJKmainfont}}{
     \PackageWarning{sourcehan}{%
@@ -25,6 +18,15 @@
         \RequirePackage[scheme = plain, fontset = none]{ctex}
     \fi
 }{}
+\newif\ifsourcehan@loadsourcepro
+\sourcehan@loadsourceprotrue
+\DeclareOption{no-sourcepro}{\sourcehan@loadsourceprofalse}
+\DeclareOption{SC}{\defaultCJKfontfeatures{Script = CJK, Language = Chinese Simplified}}
+\DeclareOption{TC}{\defaultCJKfontfeatures{Script = CJK, Language = Chinese Traditional}}
+\DeclareOption{J}{\defaultCJKfontfeatures{Script = CJK, Language = Japanese}}
+\DeclareOption{K}{\defaultCJKfontfeatures{Script = CJK, Language = Korean}}
+\ProcessOptions\relax
+\ifsourcehan@loadsourcepro\RequirePackage{sourcepro}\fi
 \setCJKmainfont{shse}
 \setCJKsansfont{shsa}
 \setCJKmonofont{shsa}
