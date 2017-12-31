@@ -1,0 +1,30 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{sourcehan}[2017/12/30 Adobe Source Han Fonts for CJK Typesetting]
+\newif\ifsourcehan@loadsourcepro
+\sourcehan@loadsourceprotrue
+\DeclareOption{no-sourcepro}{
+    \sourcehan@loadsourceprofalse
+}
+\ProcessOptions\relax
+\ifsourcehan@loadsourcepro\RequirePackage{sourcepro}\fi
+\RequirePackage{ifthen}
+\ifthenelse{\isundefined{\setCJKmainfont}}{
+    \PackageWarning{sourcehan}{%
+        `sourcehan` requires `xeCJK` or `ctex`,\MessageBreak
+        which is not loaded. Now I try to load it\MessageBreak
+        with fallback options, plain scheme,\MessageBreak
+        which might be suitable for document mainly\MessageBreak
+        written in western language but not CJK language.\MessageBreak
+        Please load `ctex` by yourself\MessageBreak
+        with your own options before this package.\MessageBreak
+    }
+    \RequirePackage{ifxetex}
+    \ifxetex
+        \RequirePackage[LoadFandol = false]{xeCJK}
+    \else
+        \RequirePackage[scheme = plain, fontset = none]{ctex}
+    \fi
+}{}
+\setCJKmainfont{shse}
+\setCJKsansfont{shsa}
+\setCJKmonofont{shsa}
