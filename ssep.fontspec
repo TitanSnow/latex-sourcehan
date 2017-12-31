@@ -22,6 +22,4 @@
     FontFace = {l}{\itdefault}{Font = SourceSerifPro, FontIndex = 7},
     FontFace = {sb}{\itdefault}{Font = SourceSerifPro, FontIndex = 9},
     FontFace = {eb}{\itdefault}{Font = SourceSerifPro, FontIndex = 11},
-%
-    FontFace = {m}{ui}{Font = SourceSerifPro, {FontIndex = 8, FakeSlant = -0.18}}
 }
