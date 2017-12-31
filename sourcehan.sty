@@ -1,6 +1,6 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{sourcehan}[2017/12/30 Adobe Source Han Fonts for CJK Typesetting]
-\RequirePackage{ifthen}
+\RequirePackage{xifthen}
 \ifthenelse{\isundefined{\setCJKmainfont}}{
     \PackageWarning{sourcehan}{%
         `sourcehan` requires `xeCJK` or `ctex`,\MessageBreak
@@ -30,3 +30,8 @@
 \setCJKmainfont{shse}
 \setCJKsansfont{shsa}
 \setCJKmonofont{shsa}
+\DeclareRobustCommand{\CJKswitch}[1]{%
+    \ifthenelse{\equal{#1}{SC}}{\addCJKfontfeatures{Language = Chinese Simplified}}{%
+    \ifthenelse{\equal{#1}{TC}}{\addCJKfontfeatures{Language = Chinese Traditional}}{%
+    \ifthenelse{\equal{#1}{J}}{\addCJKfontfeatures{Language = Japanese}}{%
+    \ifthenelse{\equal{#1}{K}}{\addCJKfontfeatures{Language = Korean}}}}}}
