@@ -1,5 +1,13 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{sourcepro}[2017/12/30 Adobe Source Pro Fonts]
+\newif\ifsourcepro@math
+\sourcepro@mathtrue
+\DeclareOption{no-math}{\sourcepro@mathfalse}
+\ProcessOptions\relax
+\ifsourcepro@math
+    \RequirePackage{unicode-math}
+    \setmathfont{texgyreschola-math.otf}
+\fi
 \RequirePackage{fontspec}
 \setmainfont{ssep}[NFSSFamily = ssep]
 \setsansfont{ssap}[NFSSFamily = ssap]
