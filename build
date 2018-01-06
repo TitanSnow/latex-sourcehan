@@ -1,0 +1,147 @@
+#!/usr/bin/env python3
+
+from collections import OrderedDict
+from concurrent.futures import ThreadPoolExecutor
+from os.path import exists
+from urllib.request import urlretrieve
+from glob import glob
+from subprocess import check_call
+import shutil
+import os
+
+def require_file(filename, url):
+    if not exists(filename):
+        urlretrieve(url, filename)
+
+def require_files(files):
+    with ThreadPoolExecutor() as exe:
+        tuple(exe.map(lambda args: require_file(args[0], args[1]), files.items()))
+
+def reunpack(tarname, dirname):
+    try:
+        shutil.rmtree(dirname)
+    except FileNotFoundError:
+        pass
+    shutil.unpack_archive(tarname, dirname)
+
+def moves(*args):
+    dst = args[-1]
+    srcs = args[:-1]
+    for src in srcs:
+        shutil.move(src, dst)
+
+def to_it_weight(weight):
+    if weight == 'Regular':
+        return 'It'
+    else:
+        return weight + 'It'
+
+def to_it_weights(weights):
+    return [to_it_weight(w) for w in weights]
+
+def build_font(weight):
+    check_call(('makeotf', '-r'), cwd=weight)
+
+def build_fonts(weights):
+    with ThreadPoolExecutor() as exe:
+        exe.map(build_font, weights)
+
+def main():
+    weights = (
+        'ExtraLight',
+        'Light',
+        'Regular',
+        'Medium',
+        'Semibold',
+        'Bold',
+        'Black',
+    )
+
+    tarballs = OrderedDict({
+        'SourceSerifPro.tar.gz': 'https://github.com/adobe-fonts/source-serif-pro/archive/2.000R.tar.gz',
+        'SourceSansPro.tar.gz': 'https://github.com/adobe-fonts/source-sans-pro/archive/2.020R-ro/1.075R-it.tar.gz',
+        'SourceCodePro.tar.gz': 'https://github.com/adobe-fonts/source-code-pro/archive/2.030R-ro/1.050R-it.tar.gz',
+        'SourceSerifProIt.zip': 'https://github.com/frankrolf/source-serif-pro/archive/italic.zip',
+    })
+    require_files(tarballs)
+    dirs = [name[:name.index('.')] for name in tarballs.keys()]
+    with ThreadPoolExecutor() as exe:
+        tuple(exe.map(lambda args: reunpack(args[0], args[1]), zip(tarballs.keys(), dirs)))
+
+    try:
+        shutil.rmtree('OTFs')
+    except FileNotFoundError:
+        pass
+    os.mkdir('OTFs')
+    moves(*glob('Source*Pro/*/OTF/*.otf'), 'OTFs')
+
+    oricwd = os.getcwd()
+    os.chdir(glob('SourceSerifProIt/*/Italic')[0])
+    build_fonts(to_it_weights(weights))
+    os.chdir(oricwd)
+    moves(*glob('SourceSerifProIt/*/Italic/*/SourceSerifPro-*.otf'), 'OTFs')
+
+    os.chdir('OTFs')
+    otfs = []
+    for family in 'Serif Sans Code'.split():
+        for series in weights:
+            for it in (False, True):
+                if family != 'Code' and series == 'Medium':
+                    continue
+                name = 'Source' + family + 'Pro-' + (to_it_weight(series) if it else series) + '.otf'
+                assert exists(name)
+                otfs.append(name)
+    assert len(otfs) == 38
+    check_call(('otf2otc', '-o', 'SourcePro.ttc') + tuple(otfs))
+    os.chdir(oricwd)
+    try:
+        shutil.rmtree('target')
+    except FileNotFoundError:
+        pass
+    os.mkdir('target')
+    moves('OTFs/SourcePro.ttc', 'target')
+
+    os.chdir('target')
+    fnts = [os.path.splitext(otf)[0] for otf in otfs]
+    for family in 'SourceSerifPro SourceSansPro SourceCodePro'.split():
+        with open(family + '.fontspec', 'w', encoding='utf8') as f:
+            f.write(r'\defaultfontfeatures[' + family + ']{\n')
+    keymapping = {
+        'Regular': 'UprightFont',
+        'Bold': 'BoldFont',
+        'It': 'ItalicFont',
+        'BoldIt': 'BoldItalicFont',
+    }
+    facemapping = {
+        'ExtraLight': 'el',
+        'Light': 'l',
+        'Medium': 'mb',
+        'Semibold': 'sb',
+        'Black': 'eb',
+    }
+    for idx, fnt in enumerate(fnts):
+        with open(fnt + '.fontspec', 'w', encoding='utf8') as f:
+            f.write(r'\defaultfontfeatures[' + fnt + ']{\n')
+            f.write(' ' * 4 + 'Extension = .ttc,\n')
+            f.write(' ' * 4 + 'UprightFont = SourcePro,\n')
+            f.write(' ' * 4 + 'FontIndex = ' + str(idx) + ',\n}\n')
+        with open(fnt[:fnt.index('-')] + '.fontspec', 'a', encoding='utf8') as f:
+            f.write(' ' * 4)
+            series = fnt[fnt.index('-') + 1:]
+            if series in keymapping:
+                f.write(keymapping[series] + ' = SourcePro, ')
+                f.write(keymapping[series][:-4] + 'Features = {FontIndex = ' + str(idx) + '},\n')
+                assert series not in facemapping
+            else:
+                if series[-2:] == 'It':
+                    it = True
+                    series = series[:-2]
+                else:
+                    it = False
+                assert series in facemapping
+                f.write('FontFace = {' + facemapping[series] + '}{' + (r'\itdefault' if it else r'\updefault') + '}{Font = SourcePro, FontIndex = ' + str(idx) + '},\n')
+    for family in 'SourceSerifPro SourceSansPro SourceCodePro'.split():
+        with open(family + '.fontspec', 'a', encoding='utf8') as f:
+            f.write(' ' * 4 + 'Extension = .ttc\n}\n')
+
+main()
