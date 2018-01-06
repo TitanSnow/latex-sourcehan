@@ -44,7 +44,7 @@ def build_font(weight):
 
 def build_fonts(weights):
     with ThreadPoolExecutor() as exe:
-        exe.map(build_font, weights)
+        tuple(exe.map(build_font, weights))
 
 def main():
     weights = (
@@ -77,7 +77,7 @@ def main():
 
     oricwd = os.getcwd()
     os.chdir(glob('SourceSerifProIt/*/Italic')[0])
-    build_fonts(to_it_weights(weights))
+    build_fonts(to_it_weights(frozenset(weights) - frozenset(('Medium',))))
     os.chdir(oricwd)
     moves(*glob('SourceSerifProIt/*/Italic/*/SourceSerifPro-*.otf'), 'OTFs')
 
